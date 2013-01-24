@@ -1,0 +1,31 @@
+ //新增用户备注
+        function LoadCreateBei() {
+            $('.addbez').click(function () {
+                var uid = $(this).attr("uis");
+                var diag = new Dialog("Diag4");
+                diag.Width = 300;
+                diag.Height = 70;
+                diag.Title = "新增用户备注";
+                diag.innerElementId = "regmemb"
+                diag.OKEvent = function () {
+                    $dests = $("#textarea").val();
+                    if (uid != "" && $dests != "") {
+                        $reso = updatedesct(uid, $dests);
+                        if ($reso == "true") {
+                            $("#textarea").val('')
+                            Dialog.alert("修改成功");
+                            diag.close();
+                        } else {
+                            Dialog.alert($reso);
+                        }
+                    } else {
+                        Dialog.alert('修改失败');
+                    }
+
+                };
+                $('#uname').val('')
+                diag.show();
+
+            })
+
+        }
